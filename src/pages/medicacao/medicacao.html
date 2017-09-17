@@ -1,0 +1,52 @@
+
+<ion-header>
+    
+      <ion-navbar class="toolbar" color="theme">
+        <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+        <ion-title>Medicação</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+
+<ion-content>
+    <ion-grid>
+    <div class="atividades-rotina">
+        
+        <ion-list>
+            <button ion-item (click)="show = !show">
+              <br>
+              <ion-icon item-left name="ios-add-circle-outline"></ion-icon>        
+              Adicionar Medicamento
+              </button>
+    
+              <div *ngIf="show; then addMedicine">
+                  
+              </div>
+            <template #addMedicine>
+              <add-medicine>Hello</add-medicine>
+            </template>
+    
+          </ion-list>
+    
+          <hr>
+        
+              <ion-list>
+                <ion-item>
+                  <h2>Doril</h2>
+                  <p>2 Comprimidos noite e dia.</p>
+                  <ion-note item-end>05:00</ion-note>
+                </ion-item>
+        
+                <ion-item>
+                  <h2>AllMed</h2>
+                  <p>1 vez por dia</p>
+                  <ion-note item-end>24:00</ion-note>
+                </ion-item>
+              </ion-list>
+            </div>
+        
+          </ion-grid>
+    
+</ion-content>
