@@ -7,13 +7,30 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MenuPage } from '../pages/menu/menu';
-
+import { RotinaPage } from '../pages/rotina/rotina';
+import { MedicacaoPage } from '../pages/medicacao/medicacao';
+import { TestesPage } from '../pages/testes/testes';
+import { RelatoriosPage } from '../pages/relatorios/relatorios';
+import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
+import { SuportePage } from '../pages/suporte/suporte';
+import { InserirAtividadePage } from '../pages/inserir-atividade/inserir-atividade';
+import { AddActivityComponent } from '../components/add-activity/add-activity';
+import { AddMedicineComponent } from '../components/add-medicine/add-medicine';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    MenuPage
+    MenuPage,
+    RotinaPage,
+    MedicacaoPage,
+    TestesPage,
+    RelatoriosPage,
+    ConfiguracoesPage,
+    SuportePage,
+    InserirAtividadePage,
+    AddActivityComponent,
+    AddMedicineComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +40,14 @@ import { MenuPage } from '../pages/menu/menu';
   entryComponents: [
     MyApp,
     HomePage,
-    MenuPage
+    MenuPage,
+    RotinaPage,
+    MedicacaoPage,
+    TestesPage,
+    RelatoriosPage,
+    ConfiguracoesPage,
+    SuportePage,
+    InserirAtividadePage
   ],
   providers: [
     StatusBar,

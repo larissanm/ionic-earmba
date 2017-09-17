@@ -1,1 +1,44 @@
-<ion-nav [root]="rootPage"></ion-nav>
+
+<!-- <ion-content padding>
+  
+    <ion-grid>
+  
+      <ion-row>
+        <ion-col col-12 class="logo-col">
+          <img src="assets/img/logo1-earmb.png" class="logo-img">
+        </ion-col>
+      </ion-row>
+      
+      <h1 class="titulo">SEJA 
+        <br>BEM VINDO(A)!
+      </h1>
+  
+    </ion-grid>
+  
+  </ion-content>-->
+
+<ion-menu [content]="NAV">
+
+  <ion-content>
+
+    <ion-list no-lines>
+
+      <div class="div-menu">
+        <img [src]="profilePicture" class="profile-img">
+      </div>
+
+      <div class="div-list">
+        <button ion-item *ngFor="let page of pages" (click)="goToPage(page.component)" menuClose>
+
+            <ion-icon item-left name="{{page.icon}}"></ion-icon>        
+              {{page.titulo}}
+        </button>
+      </div>
+
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav #NAV [root]="rootPage"></ion-nav>
