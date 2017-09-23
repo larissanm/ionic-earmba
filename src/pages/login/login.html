@@ -1,0 +1,35 @@
+
+  <ion-content padding>
+    
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 class="logo-col">
+            <img src="assets/img/logo1-earmb.png" class="logo-img">
+          </ion-col>
+        </ion-row>
+  
+        <form>
+            <ion-list class="login">
+                <ion-item>
+                    <ion-label stacked>Email:</ion-label>
+                    <ion-input type="text" name="txtEmail"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>Senha:</ion-label>
+                    <ion-input type="password" name="txtSenha"></ion-input>
+                </ion-item>
+            </ion-list>
+          </form>
+          
+          <button ion-button full icon-left class= "btn-senha">
+              Esqueceu sua senha?
+          </button>
+
+          <button ion-button full icon-left class= "btn-login" (click)="login()">
+              <ion-icon name="log-in"></ion-icon>
+              Entrar
+          </button>
+          
+      </ion-grid>
+
+    </ion-content>

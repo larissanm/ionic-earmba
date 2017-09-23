@@ -10,6 +10,7 @@ import { TestesPage } from '../pages/testes/testes';
 import { RelatoriosPage } from '../pages/relatorios/relatorios';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { SuportePage } from '../pages/suporte/suporte';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,7 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
 
-    this.rootPage = HomePage;
+    this.rootPage = LoginPage;
     
     this.pages = [
       {titulo: 'Home',          component: HomePage,          icon: 'home'},

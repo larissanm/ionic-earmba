@@ -1,0 +1,43 @@
+page-login {
+
+}
+    .logo-col{
+        margin-top: 7%;
+        text-align: center;
+        padding-right: 23px;
+    }
+
+	.btn-login{
+        margin-top: 8vw;
+		background-color: #FF3E75;
+		border: #FF3E75;
+        height: 10vw;
+    }
+
+    .login{
+        margin-top: 4vw;
+        font-size: 10px;
+    }
+
+    .btn-senha{
+        margin-top: -10%;
+        margin-left: 31%;
+        background-color: rgba(204, 204, 204, 0.00);
+        box-shadow: 0px 0px 0px #FFFFFF;
+        color: #cc315d;
+        font-size: 3vw;
+    }
+
+    .list-ios > .item-block:first-child {
+        border-top: 0.55px solid #FFFFFF;
+    }
+
+    .list-ios > .item-block:last-child {
+        border-bottom: 0.55px solid #FFFFFF;
+        border-width: 1px;
+    }
+
+    .list-ios > .item-block:last-child .item-inner, .list-ios > .item-wrapper:last-child .item-block .item-inner {
+         border-bottom: 0.55px solid #c8c8c8; 
+         border-width: 1px;
+    }

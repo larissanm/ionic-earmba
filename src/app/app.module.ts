@@ -14,6 +14,7 @@ import { RelatoriosPage } from '../pages/relatorios/relatorios';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { SuportePage } from '../pages/suporte/suporte';
 import { InserirAtividadePage } from '../pages/inserir-atividade/inserir-atividade';
+import { LoginPage } from '../pages/login/login';
 import { AddActivityComponent } from '../components/add-activity/add-activity';
 import { AddMedicineComponent } from '../components/add-medicine/add-medicine';
 
@@ -29,6 +30,7 @@ import { AddMedicineComponent } from '../components/add-medicine/add-medicine';
     ConfiguracoesPage,
     SuportePage,
     InserirAtividadePage,
+    LoginPage,
     AddActivityComponent,
     AddMedicineComponent
   ],
@@ -47,7 +49,8 @@ import { AddMedicineComponent } from '../components/add-medicine/add-medicine';
     RelatoriosPage,
     ConfiguracoesPage,
     SuportePage,
-    InserirAtividadePage
+    InserirAtividadePage,
+    LoginPage
   ],
   providers: [
     StatusBar,
