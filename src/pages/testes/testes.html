@@ -6,8 +6,12 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>testes</ion-title>
+  <ion-navbar  class="toolbar" color="theme">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Testes</ion-title>
+    
   </ion-navbar>
 
 </ion-header>
@@ -15,4 +19,27 @@
 
 <ion-content padding>
 
+  
+    
+      <ion-grid>
+        <h1 class="pergunta">{{lblPergunta}}
+        </h1>
+      </ion-grid>
+    
+    
+<ion-grid class="footer-bar">
+  <ion-row>
+  <ion-col width-50>
+    <button ion-button class="acertou"><ion-icon class="icone" ios="ios-checkmark" md="md-checkmark" ></ion-icon></button>
+  </ion-col>
+  <ion-col width-50> 
+    <button ion-button class="errou" color="danger"><ion-icon class="icone" ios="ios-close" md="md-close"></ion-icon></button>
+  </ion-col>
+  </ion-row>
+</ion-grid>
+
+    
+   
+    
+  
 </ion-content>
