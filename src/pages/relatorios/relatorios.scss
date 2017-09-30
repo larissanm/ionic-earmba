@@ -1,3 +1,32 @@
 page-relatorios {
 
 }
+
+$grafico-height: 300px;
+$info-margin-top: $grafico-height + 40px;
+
+.ion-segment{
+    width: 100%;
+}
+
+.ion-segment{
+    background-color: white;
+}
+
+.grafico{
+    margin-top: 15px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    width: 100%;
+    font-size: 07vw;
+    height: $grafico-height;
+}
+
+.content-ios:not([no-bounce]) > .scroll-content::before {
+    bottom: 1px; 
+}
+
+.info{
+    margin-top: $info-margin-top;
+    background-color: rgb(152, 255, 0);
+}

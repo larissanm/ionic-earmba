@@ -43,30 +43,29 @@
                   <br>Dia
               </button>
         </ion-col>
-
       </ion-row>
       <hr>
     </div>
 
     <div class="atividades-rotina">
 
-      <ion-list>
-        <button ion-item (click)="show = !show">
+      <ion-list no-lines>
+        <button ion-item (click)="show = !show" class="atividade-inserir">
           <br>
           <ion-icon item-left name="ios-add-circle-outline"></ion-icon>        
           Adicionar atividade
           </button>
 
-          <div *ngIf="show; then addActivity">
-              
+          <div *ngIf="show; then addActivity" class="ng-if">
           </div>
         <template #addActivity>
           <add-activity>Hello</add-activity>
         </template>
 
       </ion-list>
-
       <hr>
+    </div>
+      
 
       <ion-list>
         <ion-item>
@@ -87,7 +86,7 @@
           <ion-note item-end>17:00 <br> 17:00</ion-note>
         </ion-item>
       </ion-list>
-    </div>
+    
 
   </ion-grid>
 

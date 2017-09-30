@@ -31,5 +31,4 @@ export class LoginPage {
     this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: 'forward'});
               
 }
-
 }

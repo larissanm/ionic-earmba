@@ -39,23 +39,24 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  theme: #ff3e75
+  theme: #ff3e75,
+  theme2: #F91254,
 );
-
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
-
+$segment-button-ios-text-color: color($colors, light);
+$segment-button-ios-background-color: #FFFFFF;
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
-
+$segment-button-md-border-color-activated: color($colors, theme2);
+$segment-button-md-text-color-activated: color($colors, dark);
+$segment-button-md-opacity-disabled:	.8;
 
 // App Windows Variables
 // --------------------------------------------------
