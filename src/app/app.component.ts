@@ -11,6 +11,8 @@ import { RelatoriosPage } from '../pages/relatorios/relatorios';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { SuportePage } from '../pages/suporte/suporte';
 import { LoginPage } from '../pages/login/login';
+import { QuestionsPage } from '../pages/questions/questions';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,7 +27,7 @@ export class MyApp {
 
   public pages: Array<{titulo: string, component: any, icon: string}>;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor( platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,) {
 
     this.rootPage = LoginPage;
     
@@ -34,9 +36,9 @@ export class MyApp {
       {titulo: 'Rotina',        component: RotinaPage,        icon: 'list-box'},
       {titulo: 'Medicação',     component: MedicacaoPage,     icon: 'medkit'},
       {titulo: 'Testes',        component: TestesPage,        icon: 'clipboard'},
+      {titulo: 'Perguntas',     component: QuestionsPage,     icon: 'paper'},
       {titulo: 'Relatórios',    component: RelatoriosPage,    icon: 'stats'},
-      {titulo: 'Configurações', component: ConfiguracoesPage, icon: 'settings'},
-      {titulo: 'Suporte',       component: SuportePage,       icon: 'headset'}
+      {titulo: 'Ajustes', component: ConfiguracoesPage, icon: 'settings'},
     ];
 
     

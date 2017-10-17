@@ -5,20 +5,61 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar  class="toolbar" color="theme">
+
+  <ion-toolbar color="theme">
+  <!--<ion-navbar  class="toolbar" color="theme">-->
       <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
     <ion-title>Testes</ion-title>
-  </ion-navbar>
+  </ion-toolbar>
+
 </ion-header>
 
+<ion-content>
+  
+<div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="MiniMental">
+        MiniMental
+      </ion-segment-button>
+      <ion-segment-button value="Pessoal">
+        Pessoal
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
-<ion-content padding>
-      <ion-grid>
-        <h1 class="pergunta">{{lblPergunta}}
-        </h1>
-      </ion-grid>
+<div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'MiniMental'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-puppy-1.jpg">
+        </ion-thumbnail>
+        <h2>Ruby</h2>
+      </ion-item>
+      ...
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'Pessoal'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      ...
+    </ion-list>
+  </div>
+
+  <!--<ion-card>
+    <ion-card-content>
+
+            <h1 class="pergunta">{{lblPergunta}}
+            </h1>
+
+    
+    </ion-card-content>
+  </ion-card>-->
 </ion-content>
 
 <ion-footer>

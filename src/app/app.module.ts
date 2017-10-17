@@ -20,8 +20,16 @@ import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { SuportePage } from '../pages/suporte/suporte';
 import { InserirAtividadePage } from '../pages/inserir-atividade/inserir-atividade';
 import { LoginPage } from '../pages/login/login';
+import { QuestionsPage } from '../pages/questions/questions';
+import { AddQuestionsPage } from '../pages/add-questions/add-questions';
+import { ProfilePage } from '../pages/profile/profile';
+
 import { AddActivityComponent } from '../components/add-activity/add-activity';
 import { AddMedicineComponent } from '../components/add-medicine/add-medicine';
+import { TestMinimentalComponent } from '../components/test-minimental/test-minimental';
+import { TestPersonalComponent } from '../components/test-personal/test-personal';
+
+
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
@@ -37,8 +45,13 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     SuportePage,
     InserirAtividadePage,
     LoginPage,
+    QuestionsPage,
+    AddQuestionsPage,
+    ProfilePage,
     AddActivityComponent,
-    AddMedicineComponent
+    AddMedicineComponent,
+    TestMinimentalComponent,
+    TestPersonalComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +72,10 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     ConfiguracoesPage,
     SuportePage,
     InserirAtividadePage,
-    LoginPage
+    LoginPage,
+    QuestionsPage,
+    AddQuestionsPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

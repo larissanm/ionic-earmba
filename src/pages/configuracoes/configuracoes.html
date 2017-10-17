@@ -6,13 +6,42 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>configuracoes</ion-title>
-  </ion-navbar>
+    <ion-navbar class="toolbar" color="theme">
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Ajustes</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-list>
+
+      <button ion-item (click)="goToPageProfile()" icon-start>
+          <ion-icon name="person" item-start></ion-icon>        
+          Perfil
+      </button>
+
+      <ion-item icon-start>
+          <ion-icon name="notifications" item-start></ion-icon> 
+          <ion-label>Notificações</ion-label>
+          <ion-toggle color="secondary" checked="true"></ion-toggle>
+      </ion-item>
+
+      <button ion-item (click)="goToPageHelp()" icon-start>
+          <ion-icon name="information-circle" item-start></ion-icon>        
+          Ajuda
+      </button>
+
+      <button ion-item icon-start>
+          <ion-icon name="log-out" item-start></ion-icon>        
+          Sair
+      </button>
+
+  </ion-list>
+
 
 </ion-content>

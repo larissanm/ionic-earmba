@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ConfiguracoesPage } from '../../pages/configuracoes/configuracoes';
+import { HomePage } from '../../pages/home/home';
 
 /**
- * Generated class for the TestesPage page.
+ * Generated class for the ProfilePage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
@@ -10,20 +12,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-testes',
-  templateUrl: 'testes.html',
+  selector: 'page-profile',
+  templateUrl: 'profile.html',
 })
-export class TestesPage {
-  pergunta : String;
-  lblPergunta : String;
-  numQuestao : number;
+export class ProfilePage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.numQuestao=1;this.pergunta="Que dia foi ontem?";
-    this.lblPergunta =this.numQuestao+" - "+this.pergunta;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TestesPage');
+    console.log('ionViewDidLoad ProfilePage');
   }
 
 }
