@@ -4,7 +4,10 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { HttpModule } from '@angular/http';
+
 import { ChartsModule } from 'ng2-charts';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -19,6 +22,7 @@ import { InserirAtividadePage } from '../pages/inserir-atividade/inserir-ativida
 import { LoginPage } from '../pages/login/login';
 import { AddActivityComponent } from '../components/add-activity/add-activity';
 import { AddMedicineComponent } from '../components/add-medicine/add-medicine';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { AddMedicineComponent } from '../components/add-medicine/add-medicine';
   imports: [
     BrowserModule,
     ChartsModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,7 +64,8 @@ import { AddMedicineComponent } from '../components/add-medicine/add-medicine';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
