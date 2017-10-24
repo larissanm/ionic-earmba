@@ -68,7 +68,14 @@
       
 
       <ion-list>
-        <ion-item>
+          <ion-item *ngFor="let rotina of rotinas">
+              <h2>{{rotina.nome}}</h2>
+              <p>{{rotina.observacao}}</p>
+              <ion-note item-end>{{rotina.hora_inicio}} <br> {{rotina.hora_termino}}</ion-note>
+            </ion-item>
+          
+
+        <!-- <ion-item>
           <h2>Jogou Xadrez</h2>
           <p>Jogou xadrez com o filho na praça.</p>
           <ion-note item-end>15:00 <br> 16:00</ion-note>
@@ -85,6 +92,8 @@
           <p>Canal History</p>
           <ion-note item-end>17:00 <br> 17:00</ion-note>
         </ion-item>
+
+      -->
       </ion-list>
     
 

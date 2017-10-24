@@ -28,7 +28,7 @@ export class LoginPage {
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams ,public authService:AuthServiceProvider,private toastCtrl :ToastController,private http:Http,private storage: Storage) {
-
+    this.storage.set('userdata',null);
   }
 
 

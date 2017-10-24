@@ -4,8 +4,9 @@ export class EarmbaConstantes{
     
         static readonly Auth={
             login:'login',
-            excluir:'excluir',
-            select:'select',
-            update:'update'
+            rotinas : { 
+                inserir :'rotinas/inserir' ,
+                pesquisar:'rotinas/pesquisar'
+            }
         }
     }

@@ -4,25 +4,29 @@
   <ion-list>
       <ion-item>
           <ion-label>Nome:</ion-label>
-          <ion-input type="text" name="txtActivityTitle"></ion-input>
+          <ion-input type="text" name="txtActivityTitle" [(ngModel)]="nomeHtml"></ion-input>
       </ion-item>
       <ion-item>
           <ion-label>Local:</ion-label>
-          <ion-input type="text" name="txtActivityLocal"></ion-input>
+          <ion-input type="text" name="txtActivityLocal" [(ngModel)]="localHtml"></ion-input>
       </ion-item>
       <ion-item>
+        <ion-label>Clima:</ion-label>
+        <ion-input type="text" name="txtActivityclima" [(ngModel)]="climaHtml"></ion-input>
+    </ion-item>
+      <ion-item>
           <ion-label>Início:</ion-label>
-          <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" name="pckfHourStart"></ion-datetime>
+          <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" name="pckfHourStart" [(ngModel)]="horaInicioHtml"></ion-datetime>
       </ion-item>
       <ion-item>
           <ion-label>Término:</ion-label>
-          <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" name="pckfHourEnd"></ion-datetime>
+          <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" name="pckfHourEnd" [(ngModel)]="horaTerminoHtml"></ion-datetime>
       </ion-item>
       <ion-item>
           <ion-label>Observações:</ion-label>
-          <ion-input type="text" name="txtActivityObservations"></ion-input>
+          <ion-input type="text" name="txtActivityObservations"[(ngModel)]="observacaoHtml"></ion-input>
       </ion-item>
 
-      <button ion-button class="botao-inserir">Inserir</button>
+      <button ion-button class="botao-inserir" (click)="inserirRotina()">Inserir</button>
   </ion-list>
 </form>
