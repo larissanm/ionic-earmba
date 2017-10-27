@@ -1,0 +1,41 @@
+<!-- Generated template for the EditActivityComponent component -->
+<form>
+  <ion-list>
+      <ion-grid>
+      <ion-row>
+      <ion-item>
+          <ion-label>Nome:</ion-label>
+          <ion-input type="text" name="txtActivityTitle" [(ngModel)]="nomeHtml"></ion-input>
+      </ion-item>
+      </ion-row>      
+      <ion-item>
+          <ion-label>Local:</ion-label>
+          <ion-input type="text" name="txtActivityLocal" [(ngModel)]="localHtml"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Clima:</ion-label>
+        <ion-input type="text" name="txtActivityclima" [(ngModel)]="climaHtml"></ion-input>
+    </ion-item>
+      <ion-item>
+          <ion-label>Início:</ion-label>
+          <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" name="pckfHourStart" [(ngModel)]="horaInicioHtml"></ion-datetime>
+      </ion-item>
+      <ion-item>
+          <ion-label>Término:</ion-label>
+          <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" name="pckfHourEnd" [(ngModel)]="horaTerminoHtml"></ion-datetime>
+      </ion-item>
+      <ion-item>
+          <ion-label>Observações:</ion-label>
+          <ion-input type="text" name="txtActivityObservations"[(ngModel)]="observacaoHtml"></ion-input>
+      </ion-item>
+          <ion-row>
+               <ion-col >
+                  <button ion-button class="botao" (click)="deletarRotina()">Deletar</button>
+               </ion-col>
+               <ion-col>
+                  <button ion-button class="botao" (click)="alterarRotina()">Alterar</button>
+              </ion-col>
+          </ion-row>   
+      </ion-grid>
+  </ion-list>
+</form>

@@ -5,98 +5,107 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar class="toolbar" color="theme">
-    <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-          </button>
-    <ion-title>Rotina</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content>
-  <ion-grid>
-
-    <div class="topo-rotina">
-      <ion-row>
-
-        <ion-col width-25>
-          <button ion-button class="btn-topo">
-              Iniciar 
-              <br>Dia
+  
+    <ion-navbar class="toolbar" color="theme">
+      <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
             </button>
-        </ion-col>
-
-        <ion-col width-50>
-          <h3 class="h3-date">
-            <label class="label-date">{{dataAtual | date:'dd/MM'}}</label>
-            <br>
-            <label class="label-date">{{dataAtual | date:'yyyy'}}</label>
-          </h3>
-        </ion-col>
-
-        <ion-col width-25>
-          <button ion-button class="btn-topo">
-                  Finalizar
-                  <br>Dia
+      <ion-title>Rotina</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+    <ion-grid>
+  
+      <div class="topo-rotina">
+        <ion-row>
+  
+          <ion-col width-25>
+            <button ion-button class="btn-topo">
+                Iniciar 
+                <br>Dia
               </button>
-        </ion-col>
-      </ion-row>
-      <hr>
-    </div>
-
-    <div class="atividades-rotina">
-
-      <ion-list no-lines>
-        <button ion-item (click)="show = !show" class="atividade-inserir">
-          <br>
-          <ion-icon item-left name="ios-add-circle-outline"></ion-icon>        
-          Adicionar atividade
-          </button>
-
-          <div *ngIf="show; then addActivity" class="ng-if">
-          </div>
-        <template #addActivity>
-          <add-activity>Hello</add-activity>
-        </template>
-
-      </ion-list>
-      <hr>
-    </div>
+          </ion-col>
+  
+          <ion-col width-50>
+            <h3 class="h3-date">
+              <label class="label-date">{{dataAtual | date:'dd/MM'}}</label>
+              <br>
+              <label class="label-date">{{dataAtual | date:'yyyy'}}</label>
+            </h3>
+          </ion-col>
+  
+          <ion-col width-25>
+            <button ion-button class="btn-topo">
+                    Finalizar
+                    <br>Dia
+                </button>
+          </ion-col>
+        </ion-row>
+        <hr>
+      </div>
+  
+      <div class="atividades-rotina">
+  
+        <ion-list no-lines>
+          <button ion-item (click)="show = !show" class="atividade-inserir">
+            <br>
+            <ion-icon item-left name="ios-add-circle-outline"></ion-icon>        
+            Adicionar atividade
+            </button>
+  
+            <div *ngIf="show; then addActivity" class="ng-if">
+            </div>
+          <template #addActivity>
+            <add-activity>Hello</add-activity>
+          </template>
+  
+        </ion-list>
+        <hr>
+      </div>
+        
+  
+        <ion-list>
+            <ion-item *ngFor="let rotina of rotinas" (click)="show2 = !show2 ; armazenarRotina(rotina)">
+                <h2>{{rotina.nome}}</h2>
+                <p>{{rotina.observacao}}</p>
+                <ion-note item-end>{{rotina.hora_inicio}} <br> {{rotina.hora_termino}}</ion-note>
+                <div class="atividades-rotina">
+                            <div *ngIf="show2; then editActivity" class="ng-if">
+                            </div>
+                          <template #editActivity>
+                            <edit-activity>Hello</edit-activity>
+                          </template>
+                        <hr>
+                      </div>
+              </ion-item>
+              
+            
+  
+          <!-- <ion-item>
+            <h2>Jogou Xadrez</h2>
+            <p>Jogou xadrez com o filho na praça.</p>
+            <ion-note item-end>15:00 <br> 16:00</ion-note>
+          </ion-item>
+  
+          <ion-item>
+            <h2>Passeou com o Cachorro</h2>
+            <p>Passeou com o cachorro na mesma praça em que jogou xadrez.</p>
+            <ion-note item-end>16:00 <br> 17:00</ion-note>
+          </ion-item>
+  
+          <ion-item>
+            <h2>Assistiu TV</h2>
+            <p>Canal History</p>
+            <ion-note item-end>17:00 <br> 17:00</ion-note>
+          </ion-item>
+  
+        -->
+        </ion-list>
       
-
-      <ion-list>
-          <ion-item *ngFor="let rotina of rotinas">
-              <h2>{{rotina.nome}}</h2>
-              <p>{{rotina.observacao}}</p>
-              <ion-note item-end>{{rotina.hora_inicio}} <br> {{rotina.hora_termino}}</ion-note>
-            </ion-item>
-          
-
-        <!-- <ion-item>
-          <h2>Jogou Xadrez</h2>
-          <p>Jogou xadrez com o filho na praça.</p>
-          <ion-note item-end>15:00 <br> 16:00</ion-note>
-        </ion-item>
-
-        <ion-item>
-          <h2>Passeou com o Cachorro</h2>
-          <p>Passeou com o cachorro na mesma praça em que jogou xadrez.</p>
-          <ion-note item-end>16:00 <br> 17:00</ion-note>
-        </ion-item>
-
-        <ion-item>
-          <h2>Assistiu TV</h2>
-          <p>Canal History</p>
-          <ion-note item-end>17:00 <br> 17:00</ion-note>
-        </ion-item>
-
-      -->
-      </ion-list>
-    
-
-  </ion-grid>
-
-</ion-content>
+  
+    </ion-grid>
+  
+  </ion-content>

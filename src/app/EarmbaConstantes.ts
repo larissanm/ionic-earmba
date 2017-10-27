@@ -6,7 +6,9 @@ export class EarmbaConstantes{
             login:'login',
             rotinas : { 
                 inserir :'rotinas/inserir' ,
-                pesquisar:'rotinas/pesquisar'
+                pesquisar:'rotinas/pesquisar',
+                atualizar:'rotinas/atualizar',
+                deletar:'rotinas/deletar'
             }
         }
     }

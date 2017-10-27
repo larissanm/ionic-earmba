@@ -25,6 +25,7 @@ import { AddQuestionsPage } from '../pages/add-questions/add-questions';
 import { ProfilePage } from '../pages/profile/profile';
 
 import { AddActivityComponent } from '../components/add-activity/add-activity';
+import { EditActivityComponent } from '../components/edit-activity/edit-activity';
 import { AddMedicineComponent } from '../components/add-medicine/add-medicine';
 import { TestMinimentalComponent } from '../components/test-minimental/test-minimental';
 import { TestPersonalComponent } from '../components/test-personal/test-personal';
@@ -49,6 +50,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     AddQuestionsPage,
     ProfilePage,
     AddActivityComponent,
+    EditActivityComponent,
     AddMedicineComponent,
     TestMinimentalComponent,
     TestPersonalComponent

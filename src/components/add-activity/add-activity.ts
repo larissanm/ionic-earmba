@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import {ToastController } from 'ionic-angular';
+import { NavController,ToastController } from 'ionic-angular';
+import { RotinaPage } from '../../pages/rotina/rotina';
 import { EarmbaConstantes } from '../../app/EarmbaConstantes';
 import {Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -25,7 +26,7 @@ export class AddActivityComponent {
   observacaoHtml : string;
   climaHtml :string;
   data :string;
-  constructor(private toastCtrl :ToastController,private http:Http,private storage: Storage) {
+  constructor(public navCtrl: NavController,private toastCtrl :ToastController,private http:Http,private storage: Storage) {
     console.log('Hello AddActivityComponent Component');
     this.text = 'Hello World';
     storage.get('userData').then((val) => {
@@ -52,6 +53,7 @@ export class AddActivityComponent {
               if(data!=""){
                 this.presentToast(data);
                this.limparTexBox();
+               this.navCtrl.setRoot(RotinaPage, {}, {animate: true, direction: 'forward'});
               }
               else{
                 this.presentToast("Problemas com a Inserção");

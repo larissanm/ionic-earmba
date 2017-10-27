@@ -116,6 +116,10 @@ carregaUserdata(){
     this.isListReady();
   });
 }
-     
 
+armazenarRotina(rotina : any){
+  this.storage.set('rotina',rotina);
 }
+
+}  
+
