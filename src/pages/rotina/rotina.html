@@ -75,8 +75,8 @@
                   <ion-note item-end>{{rotina.hora_inicio}} <br> {{rotina.hora_termino}}</ion-note>
                 </ion-item>
                 <ion-item-options>
-                    <button ion-button color="danger" icon-start>
-                      <ion-icon name="remove"></ion-icon>
+                    <button ion-button color="danger" (click)="deletarRotina(rotina.id_atividade)" icon-start>
+                      <ion-icon name="remove" ></ion-icon>
                       Excluir
                     </button>
                 </ion-item-options>

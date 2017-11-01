@@ -9,6 +9,12 @@ export class EarmbaConstantes{
                 pesquisar:'rotinas/pesquisar',
                 atualizar:'rotinas/atualizar',
                 deletar:'rotinas/deletar'
+            },
+            remedio : { 
+                inserir :'remedio/inserir' ,
+                pesquisar:'remedio/pesquisar',
+                atualizar:'remedio/atualizar',
+                deletar:'remedio/deletar'
             }
         }
     }

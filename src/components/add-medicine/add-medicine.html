@@ -4,29 +4,26 @@
     <ion-list>
         <ion-item>
             <ion-label>Nome:</ion-label>
-            <ion-input type="text" name="txtMedicineTitle"></ion-input>
+            <ion-input type="text" name="txtMedicineTitle" [(ngModel)]="nomeHtml"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Dosagem:</ion-label>
-            <ion-input type="text" name="txtMedicineDosagem"></ion-input>
+            <ion-input type="text" name="txtMedicineDosagem" [(ngModel)]="dosagemHtml"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Miligramagem:</ion-label>
-            <ion-input type="text" name="txtMedicineMiligramagem"></ion-input>
+            <ion-input type="text" name="txtMedicineMiligramagem" [(ngModel)]="miligramagemHtml"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Princípio Ativo:</ion-label>
-            <ion-input type="text" name="txtMedicinePrincipio"></ion-input>
+            <ion-input type="text" name="txtMedicinePrincipio" [(ngModel)]="principioAtivoHtml"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Intervalo:</ion-label>
-            <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" name="pckfHourIntervalo"></ion-datetime>
+            <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" name="pckfHourIntervalo" [(ngModel)]="intervaloHtml"></ion-datetime>
         </ion-item>
-        <ion-item>
-            <ion-label>Próxima Aplicação:</ion-label>
-            <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" name="pckfNextAplication"></ion-datetime>
-        </ion-item>
+      
 
-        <button ion-button class="botao-inserir">Inserir</button>
+        <button ion-button class="botao-inserir" (click)="inserirRemedio()">Inserir</button>
     </ion-list>
   </form>

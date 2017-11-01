@@ -32,7 +32,23 @@
     
           <hr>
         
-              <ion-list>
+          <ion-list>
+            <ion-item-sliding  *ngFor="let remedio of remedios">
+                <ion-item>
+                    <h2>{{remedio.nome}}</h2>
+                    <p>{{remedio.dosagem}}</p>
+                    <ion-note item-end>{{remedio.intervalo}}</ion-note>
+                  </ion-item>
+                  <ion-item-options>
+                      <button ion-button color="danger" (click)="deletarRemedio(remedio.id_remedio)" icon-start>
+                        <ion-icon name="remove" ></ion-icon>
+                        Excluir
+                      </button>
+                  </ion-item-options>
+            </ion-item-sliding>           
+          </ion-list>
+
+             <!-- <ion-list>
                 <ion-item>
                   <h2>Doril</h2>
                   <p>2 Comprimidos noite e dia.</p>
@@ -45,6 +61,8 @@
                   <ion-note item-end>24:00</ion-note>
                 </ion-item>
               </ion-list>
+
+            -->
             </div>
         
           </ion-grid>

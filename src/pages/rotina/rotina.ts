@@ -25,7 +25,7 @@ export class RotinaPage {
 
   public atividade2: string;
 
-  rotinas : { 'id_cad':"",'nome':"", 'local':"", 'hora_inicio': "", 'hora_termino': "", 'observacao': "", 'clima': "",'data':""}[];    
+  rotinas : { 'id_cad':"",'nome':"", 'local':"", 'hora_inicio': "", 'hora_termino': "", 'observacao': "", 'clima': "",'data':"",'id_atividade':""}[];    
   
   userData = {"id_cad":""};
 
@@ -70,6 +70,31 @@ export class RotinaPage {
       }
     }
   }
+
+  deletarRotina(idRotina : any){
+    let headers = new Headers();
+    console.log(idRotina)+"idRotina";
+    headers.append('Content-Type', 'application/json');
+    this.http.delete(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.rotinas.deletar + `/?id_atividade=${idRotina}`)
+    .map(res => res.json())
+    .subscribe(
+      data => { 
+        if(data!=""){
+          this.presentToast(data);
+         this.navCtrl.setRoot(RotinaPage, {}, {animate: true, direction: 'forward'});
+        }
+        else{
+          this.presentToast("Problemas com a Exclusão");
+        }
+      }, 
+      err => {
+        console.log("rej" + err);
+        this.presentToast(err);
+      }
+    );  
+    
+  }
+
     //carrega a lista de Atividade
      carregarList(){
       this.date=this.dataHoje().replace("/","-");
