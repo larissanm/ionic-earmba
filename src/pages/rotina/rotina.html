@@ -68,41 +68,19 @@
         
   
         <ion-list>
-            <ion-item *ngFor="let rotina of rotinas" (click)="show2 = !show2 ; armazenarRotina(rotina)">
-                <h2>{{rotina.nome}}</h2>
-                <p>{{rotina.observacao}}</p>
-                <ion-note item-end>{{rotina.hora_inicio}} <br> {{rotina.hora_termino}}</ion-note>
-                <div class="atividades-rotina">
-                            <div *ngIf="show2; then editActivity" class="ng-if">
-                            </div>
-                          <template #editActivity>
-                            <edit-activity>Hello</edit-activity>
-                          </template>
-                        <hr>
-                      </div>
-              </ion-item>
-              
-            
-  
-          <!-- <ion-item>
-            <h2>Jogou Xadrez</h2>
-            <p>Jogou xadrez com o filho na praça.</p>
-            <ion-note item-end>15:00 <br> 16:00</ion-note>
-          </ion-item>
-  
-          <ion-item>
-            <h2>Passeou com o Cachorro</h2>
-            <p>Passeou com o cachorro na mesma praça em que jogou xadrez.</p>
-            <ion-note item-end>16:00 <br> 17:00</ion-note>
-          </ion-item>
-  
-          <ion-item>
-            <h2>Assistiu TV</h2>
-            <p>Canal History</p>
-            <ion-note item-end>17:00 <br> 17:00</ion-note>
-          </ion-item>
-  
-        -->
+          <ion-item-sliding  *ngFor="let rotina of rotinas">
+              <ion-item>
+                  <h2>{{rotina.nome}}</h2>
+                  <p>{{rotina.observacao}}</p>
+                  <ion-note item-end>{{rotina.hora_inicio}} <br> {{rotina.hora_termino}}</ion-note>
+                </ion-item>
+                <ion-item-options>
+                    <button ion-button color="danger" icon-start>
+                      <ion-icon name="remove"></ion-icon>
+                      Excluir
+                    </button>
+                </ion-item-options>
+          </ion-item-sliding>           
         </ion-list>
       
   
