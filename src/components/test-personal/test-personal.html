@@ -1,4 +1,18 @@
 <!-- Generated template for the TestPersonalComponent component -->
 <div>
-  {{text}}
-</div>
+        <ion-card class="card-class">
+          <ion-item>
+            <button ion-button clear item-start [disabled]="!isenabled">{{numQuestion}}/{{numOfQuestions}}</button>
+          </ion-item>
+          <hr>
+          <ion-card-content>
+            <h2>{{question}}</h2>
+            <img [src]="base64Img"/>
+          </ion-card-content>
+          <hr>
+          <ion-item>
+            <button ion-button clear item-start [disabled]="!isenabled">Resposta: {{lblAnswer}}</button>
+          </ion-item>
+      
+        </ion-card>
+      </div>

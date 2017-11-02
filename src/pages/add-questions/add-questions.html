@@ -15,4 +15,30 @@
 
 <ion-content padding>
 
+    <ion-list>
+
+        <ion-item>
+            <ion-label stacked>Pergunta</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Resposta</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <ion-card>
+
+            <ion-card-content>
+              <img [src]="base64Img"/>
+            </ion-card-content>
+        
+            <ion-item>
+              <button (click)="imgActionSheet()" ion-button clear item-end>Imagem</button>
+            </ion-item>
+
+    </ion-card>
+
 </ion-content>

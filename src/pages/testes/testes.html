@@ -19,35 +19,32 @@
 <ion-content>
   
 <div padding>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="MiniMental">
+    <ion-segment [(ngModel)]="tests">
+      <ion-segment-button value="MiniMental" (click)="show = !show" >
         MiniMental
       </ion-segment-button>
-      <ion-segment-button value="Pessoal">
+      <ion-segment-button value="Pessoal"  (click)="show = !show" >
         Pessoal
       </ion-segment-button>
     </ion-segment>
   </div>
 
-<div [ngSwitch]="pet">
+<div [ngSwitch]="tests">
     <ion-list *ngSwitchCase="'MiniMental'">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="img/thumbnail-puppy-1.jpg">
-        </ion-thumbnail>
-        <h2>Ruby</h2>
-      </ion-item>
-      ...
+        <div *ngIf="show; then testMiniMental" class="ng-if">
+        </div>
+    <template #testMiniMental>
+      <test-minimental></test-minimental>
+    </template>
+
     </ion-list>
   
     <ion-list *ngSwitchCase="'Pessoal'">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="img/thumbnail-kitten-1.jpg">
-        </ion-thumbnail>
-        <h2>Luna</h2>
-      </ion-item>
-      ...
+          <div *ngIf="show; then testPersonal" class="ng-if">
+            </div>
+        <template #testPersonal>
+          <test-personal>Hello</test-personal>
+        </template>
     </ion-list>
   </div>
 
