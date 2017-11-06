@@ -83,4 +83,8 @@ export class AddQuestionsPage {
     });
   }
 
+  addQuestion(){
+    
+  }
+
 }

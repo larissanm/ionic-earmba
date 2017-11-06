@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { ChartsModule } from 'ng2-charts';
+//import { CurrentWeekNumber } from 'current-week-number';
+
+import { EarmbaConstantes } from '../../app/EarmbaConstantes';
+import {Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -11,13 +17,25 @@ export class RelatoriosPage {
   pet: string = "puppies";
   isAndroid: boolean = false;
 
+  userData = {"id_cad":""};
+
+  week : number;
+  dia : number;
+  mes : number;
+  ano : number;
+  
+  notasDiarias : {'id_nota_diaria':"",'id_cad':"",'resultadommes':"",'resultadotp':"",'resultadotf':"",'data':"",'semana':""}[];
+  resultadoMMES: number[];
+  resultadoTP:number[];
+  resultadoTF:number[];
+  dias:string[];
     // lineChart
     public lineChartData:Array<any> = [
-      {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-      {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-      {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
+      {data: [0,1,2,3,4,5,30], label: 'MN Mental'},
+      {data: [0,1,2,3,4,5,30], label: 'Fotografico'},
+      {data: [0,1,2,3,4,5,30], label: 'Pessoal'}
     ];
-    public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    public lineChartLabels:Array<any> = ['Seg', 'Ter', 'Quar', 'Quin', 'Sex', 'Sab', 'Dom'];
     public lineChartOptions:any = {
       responsive: false
     };
@@ -55,7 +73,7 @@ export class RelatoriosPage {
       for (let i = 0; i < this.lineChartData.length; i++) {
         _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
         for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-          _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
+          _lineChartData[i].data[j] = (Math.random()+Math.random())*100;
         }
       }
       this.lineChartData = _lineChartData;
@@ -69,12 +87,101 @@ export class RelatoriosPage {
     public chartHovered(e:any):void {
       console.log(e);
     }
+
+    
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private toastCtrl :ToastController,private http:Http,private storage: Storage) {
+    var date = new Date();
+    this.dia = date.getDate();
+    this.mes = date.getMonth()+1;
+    this.ano = date.getFullYear();
+    storage.get('userData').then((val) => {
+      this.userData.id_cad=val.id_cad;
+      console.log('Value', this.userData.id_cad);
+      this.gerarGrafico();
+    });
+   
+    console.log(this.week);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RelatoriosPage');
   }
+
+  /**
+   * gerarGrafico
+   */
+  public gerarGrafico() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    
+    let data = { 'id_cad':this.userData.id_cad,'data':this.ano+"-"+this.mes+"-"+this.dia};    
+    
+    this.http.post(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.relatorio.gerarGrafico, JSON.stringify(data), {headers: headers})
+          .map(res => res.json())
+          .subscribe(
+            data => { 
+              if(data!=""){
+                console.log(data);
+                this.notasDiarias=data;
+                this.resultadoMMES=new Array();
+                this.resultadoTF=new Array();
+                this.resultadoTP=new Array();
+                this.dias=new Array();
+                for(var l=0;l<data.length;l++){
+                  console.log("er :" +data[l].resultadommes);
+                  this.resultadoMMES.push(data[l].resultadommes);
+                  this.resultadoTF.push(data[l].resultadotf);
+                  this.resultadoTP.push(data[l].resultadotp);
+                  //
+                  let  dia :string = data[l].data;
+                  let dias :string[] =dia.split("-");
+                  this.dias[l]=dias[1]+"/"+dias[2]
+                }
+                console.log(this.resultadoMMES+" :ar");
+              
+                let _lineChartData:Array<any> = new Array(this.lineChartData.length);
+                for (let i = 0; i < this.lineChartData.length; i++) {
+                  _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
+                  for (let j = 0; j < this.lineChartData[i].data.length; j++) {
+                    if(i==0){
+                    _lineChartData[i].data[j] = this.resultadoMMES[j];
+                    }
+                    else if(i==1){
+                      _lineChartData[i].data[j] = this.resultadoTF[j];
+                    }
+                    else if(i==2){
+                      _lineChartData[i].data[j] = this.resultadoTP[j];
+                    }
+                  }
+                }
+                this.lineChartData = _lineChartData;
+               
+               
+              
+               // this.randomize();
+              }
+              else{
+                this.presentToast("Problemas com o Grafico");
+              }
+            }, 
+            err => {
+              console.log("rej" + err);
+              this.presentToast(err);
+            }
+          );  
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
+  
+  } 
+
+
+  
 
 }

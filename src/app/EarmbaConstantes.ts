@@ -15,6 +15,9 @@ export class EarmbaConstantes{
                 pesquisar:'remedio/pesquisar',
                 atualizar:'remedio/atualizar',
                 deletar:'remedio/deletar'
+            },
+            relatorio:{
+                gerarGrafico:'relatorio/gerarGrafico'
             }
         }
     }

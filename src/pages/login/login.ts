@@ -28,7 +28,11 @@ export class LoginPage {
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams ,public authService:AuthServiceProvider,private toastCtrl :ToastController,private http:Http,private storage: Storage) {
-    this.storage.set('userdata',null);
+    storage.get('userData').then((val) => {
+      if(val!=null){
+        this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: 'forward'});
+       }
+    });
   }
 
 
@@ -38,7 +42,7 @@ export class LoginPage {
 
   login(): void{
 //(linha de exemplo de get)this.http.get(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.login + `/?email=${this.email}&senha=${this.senha}`).map(res => res.json())
-/*let headers = new Headers();
+let headers = new Headers();
 headers.append('Content-Type', 'application/json');
 
 let data = { 'login': this.loginHtml, 'senha': this.senhaHtml};    
@@ -50,9 +54,9 @@ this.http.post(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.login, JS
           if(data!=""){
           this.userData=data
           console.log("data "+ this.userData.email);
-          this.storage.set('userData',this.userData);*/
+          this.storage.set('userData',this.userData);
           this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: 'forward'});
-          /*}
+          }
           else{
             this.presentToast("Email e/ou Senha Invalidos");
           }
@@ -61,7 +65,7 @@ this.http.post(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.login, JS
           console.log("rej" + err);
           this.presentToast(err);
         }
-      );   */  
+      );   
 }
 
 presentToast(msg) {
