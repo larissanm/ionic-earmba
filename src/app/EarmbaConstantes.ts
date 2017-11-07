@@ -18,6 +18,10 @@ export class EarmbaConstantes{
             },
             relatorio:{
                 gerarGrafico:'relatorio/gerarGrafico'
+            },
+            teste:{
+               pesquisarPessoal:'teste/pesquisarPessoal',
+               pesquisarMiniMental:'teste/pesquisarMiniMental'
             }
         }
     }
