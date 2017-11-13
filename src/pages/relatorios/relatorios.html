@@ -5,21 +5,28 @@
         <button ion-button menuToggle>
                 <ion-icon name="menu"></ion-icon>
               </button>
-        <ion-title>Relatório</ion-title>
+        <ion-title>
+                <ion-icon name='ios-arrow-back' is-active="true" (click)="clickAnt()"></ion-icon>
+                Sem 1 M 11 D 1-4     
+          <ion-icon name='ios-arrow-forward' is-active="false" (click)="clickPost()"></ion-icon>
+        </ion-title>
       </ion-navbar>
     
     </ion-header>
 
-<ion-content class="content1">
-    
-            <div class="ion-segment" ion-fixed>
+<ion-content class="content1" padding>
+
+
+      <div class="ion-segment" ion-fixed>
 
             <div class="grafico" >
-                <div class="row">
-                    <div class="col-md-6">
-                      <div style="display: block;">
-                        
-                      <canvas baseChart width="400" height="300"
+              
+                    <div class="col-md-12">
+
+
+
+
+                      <canvas class="canvas" (swipe)="swipeEvent($event)" baseChart height="250"
                                   [datasets]="lineChartData"
                                   [labels]="lineChartLabels"
                                   [options]="lineChartOptions"
@@ -27,9 +34,9 @@
                                   [legend]="lineChartLegend"
                                   [chartType]="lineChartType"
                                   (chartHover)="chartHovered($event)"
-                                  (chartClick)="chartClicked($event)"></canvas>
-                      </div>
-                    </div>
+                                  (chartClick)="chartClicked($event)">
+                      </canvas>
+
                   </div>
               </div>
 
