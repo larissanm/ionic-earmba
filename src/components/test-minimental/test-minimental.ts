@@ -37,8 +37,8 @@ export class TestMinimentalComponent {
 
     this.takeDataMiniMental();
 
-  this.numQuestion=1; this.numOfQuestions=10; this.question="Que dia foi ontem?";
-  this.lblAnswer="Dia de fazer tcc";
+  this.numQuestion=1;
+  
   }
 
   //Armazena os dados de UserData
@@ -56,6 +56,8 @@ export class TestMinimentalComponent {
       data => { 
         if(data!=""){
         this.perguntasStc=data;
+        this.numOfQuestions=this.perguntasStc.length;
+        this.question=this.perguntasStc[this.numQuestion-1].pergunta_stc;
         console.log(this.perguntasStc);
         }
         else{
@@ -76,6 +78,15 @@ export class TestMinimentalComponent {
     duration: 2000
     });
     toast.present();
+    }
+
+    /**
+     * acertouPergunta
+     */
+    public acertouResposta() {
+      console.log("acertou");
+      this.numQuestion=this.numQuestion+1;
+      this.question=this.perguntasStc[this.numQuestion-1].pergunta_stc;
     }
 
 }

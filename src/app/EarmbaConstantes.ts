@@ -17,11 +17,13 @@ export class EarmbaConstantes{
                 deletar:'remedio/deletar'
             },
             relatorio:{
-                gerarGrafico:'relatorio/gerarGrafico'
+                gerarGrafico:'relatorio/gerarGrafico',
+                receberWeekNumber:'relatorio/receberWeekNumber'
             },
             teste:{
                pesquisarPessoal:'teste/pesquisarPessoal',
-               pesquisarMiniMental:'teste/pesquisarMiniMental'
+               pesquisarMiniMental:'teste/pesquisarMiniMental',
+               responderMiniMental:'teste/inserirRespostaMiniMental'
             }
         }
     }

@@ -7,68 +7,87 @@
 <ion-header>
 
   <ion-toolbar color="theme">
-  <!--<ion-navbar  class="toolbar" color="theme">-->
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
+    <!--<ion-navbar  class="toolbar" color="theme">-->
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Testes</ion-title>
   </ion-toolbar>
 
 </ion-header>
 
 <ion-content>
-  
-<div padding>
+
+  <div padding>
     <ion-segment [(ngModel)]="tests">
-      <ion-segment-button value="MiniMental" (click)="show = !show" >
+      <ion-segment-button value="MiniMental" (click)="show = true;show2=false">
         MiniMental
       </ion-segment-button>
-      <ion-segment-button value="Pessoal"  (click)="show = !show" >
+      <ion-segment-button value="Pessoal" (click)="show2=true;show=false">
         Pessoal
       </ion-segment-button>
     </ion-segment>
   </div>
 
-<div [ngSwitch]="tests">
+  <div [ngSwitch]="tests">
+
     <ion-list *ngSwitchCase="'MiniMental'">
-        <div *ngIf="show; then testMiniMental" class="ng-if">
-        </div>
-    <template #testMiniMental>
-      <test-minimental></test-minimental>
-    </template>
+      <div>
+        <ion-card class="card-class">
+          <ion-item>
+            <button ion-button clear item-start [disabled]="!isenabled">{{MNnumQuestion}}/{{MNnumOfQuestions}}</button>
+          </ion-item>
+          <hr>
+          <ion-card-content>
+            <h2>{{MNquestion}}</h2>
+            <img [src]="base64Img" />
+          </ion-card-content>
+          <hr>
+          <ion-item>
+            <button ion-button clear item-start [disabled]="!isenabled"></button> 
+          </ion-item>
 
+        </ion-card>
+      </div>
     </ion-list>
-  
+
     <ion-list *ngSwitchCase="'Pessoal'">
-          <div *ngIf="show; then testPersonal" class="ng-if">
-            </div>
-        <template #testPersonal>
-          <test-personal>Hello</test-personal>
-        </template>
+      <div>
+        <ion-card class="card-class">
+          <ion-item>
+            <button ion-button clear item-start [disabled]="!isenabled">{{numQuestion}}/{{numOfQuestions}}</button>
+          </ion-item>
+          <hr>
+          <ion-card-content>
+            <h2>{{question}}</h2>
+            <img [src]="base64Img" />
+          </ion-card-content>
+          <hr>
+          <ion-item>
+            <button ion-button clear item-start [disabled]="!isenabled">Resposta: {{lblAnswer}}</button>
+          </ion-item>
+
+        </ion-card>
+      </div>
     </ion-list>
-  </div>
 
-  <!--<ion-card>
-    <ion-card-content>
-
-            <h1 class="pergunta">{{lblPergunta}}
-            </h1>
-
-    
-    </ion-card-content>
-  </ion-card>-->
+    </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-grid>
       <ion-row>
-      <ion-col width-50>
-        <button ion-button clear round class="acertou"><ion-icon class="icone" ios="ios-checkmark" md="md-checkmark" ></ion-icon></button>
-      </ion-col>
-      <ion-col width-50> 
-        <button ion-button clear round class="errou" color="danger"><ion-icon class="icone" ios="ios-close" md="md-close"></ion-icon></button>
-      </ion-col>
+        <ion-col width-50>
+          <button ion-button clear round (click)="acertouResposta(show,show2)" class="acertou">
+            <ion-icon class="icone" ios="ios-checkmark" md="md-checkmark"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button clear round (click)="errouResposta(show,show2)" class="errou" color="danger">
+            <ion-icon class="icone" ios="ios-close" md="md-close"></ion-icon>
+          </button>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-toolbar>

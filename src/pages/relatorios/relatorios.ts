@@ -24,15 +24,28 @@ export class RelatoriosPage {
   mes: number;
   ano: number;
 
+  semana: number;
+  semanaAnterior: number;
+
+  htmlDia: string;
+
   notasDiarias: { 'id_nota_diaria': "", 'id_cad': "", 'resultadommes': "", 'resultadotp': "", 'resultadotf': "", 'data': "", 'semana': "" }[];
   resultadoMMES: number[];
   resultadoTP: number[];
   resultadoTF: number[];
+  diaSemna: string[] = ['Seg', 'Ter', 'Quar', 'Quin', 'Sex', 'Sab', 'Dom'];
   dias: string[];
+
+  diasRotina: string[];
+ 
+  rotinas : { 'id_cad':"",'nome':"", 'local':"", 'hora_inicio': "", 'hora_termino': "", 'observacao': "", 'clima': "",'data':"",'id_atividade':""}[][];    
+  
+
   // lineChart
   public lineChartData: Array<any> = [
-    { data: [0, 1, 2, 3, 4, 5, 30], label: 'MN Mental' },
-    { data: [0, 1, 2, 3, 4, 5, 30], label: 'Fotografico' }
+    { data: [0, 0, 0, 0, 0, 0, 0], label: 'MN Mental' },
+    { data: [0, 0, 0, 0, 0, 0, 0], label: 'Fotografico' },
+    { data: [0, 0, 0, 0, 0, 0, 0], label: 'Pessoal' }
   ];
   public lineChartLabels: Array<any> = ['Seg', 'Ter', 'Quar', 'Quin', 'Sex', 'Sab', 'Dom'];
   public lineChartOptions: any = {
@@ -94,6 +107,8 @@ export class RelatoriosPage {
     this.dia = date.getDate();
     this.mes = date.getMonth() + 1;
     this.ano = date.getFullYear();
+    this.getWeekNumber();
+    this.semanaAnterior = null;
     storage.get('userData').then((val) => {
       this.userData.id_cad = val.id_cad;
       console.log('Value', this.userData.id_cad);
@@ -103,24 +118,36 @@ export class RelatoriosPage {
     console.log(this.week);
   }
 
-    /**
-   * evento para mudar o grafico arrastando na tela
-   */
+  /**
+ * evento para mudar o grafico arrastando na tela
+ */
   swipeEvent(e) {
     if (e.direction == 2) {
-        this.presentToast("Semana anterior.");
+      this.presentToast("Semana anterior.");
+      this.semanaAnterior = this.semana;
+      this.semana--;
+      this.gerarGrafico();
     }
     else {
-        this.presentToast("Semana posterior.");
+      this.presentToast("Semana posterior.");
+      this.semanaAnterior = this.semana;
+      this.semana++;
+      this.gerarGrafico();
     }
-}
-
-  clickAnt(){
-    this.presentToast("Semana anterior.");
   }
 
-  clickPost(){
+  clickAnt() {
+    this.presentToast("Semana anterior.");
+    this.semanaAnterior = this.semana;
+    this.semana--;
+    this.gerarGrafico();
+  }
+
+  clickPost() {
     this.presentToast("Semana posterior.");
+    this.semanaAnterior = this.semana;
+    this.semana++;
+    this.gerarGrafico();
   }
 
   ionViewDidLoad() {
@@ -130,12 +157,12 @@ export class RelatoriosPage {
   /**
    * gerarGrafico
    */
-  public gerarGrafico() {
+  private gerarGrafico() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let data = { 'id_cad': this.userData.id_cad, 'data': this.ano + "-" + this.mes + "-" + this.dia };
-
+    let data = { 'id_cad': this.userData.id_cad, 'ano': this.ano, 'semana': this.semana };
+    console.log(data);
     this.http.post(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.relatorio.gerarGrafico, JSON.stringify(data), { headers: headers })
       .map(res => res.json())
       .subscribe(
@@ -147,6 +174,8 @@ export class RelatoriosPage {
           this.resultadoTF = new Array();
           this.resultadoTP = new Array();
           this.dias = new Array();
+          this.rotinas=new Array();
+          this.diasRotina=new Array();
           for (var l = 0; l < data.length; l++) {
             console.log("er :" + data[l].resultadommes);
             this.resultadoMMES.push(data[l].resultadommes);
@@ -155,9 +184,11 @@ export class RelatoriosPage {
             //
             let dia: string = data[l].data;
             let dias: string[] = dia.split("-");
-            this.dias[l] = dias[1] + "/" + dias[2]
+            this.dias[l] = dias[2] + "/" + dias[1]
+            this.diasRotina[l]=data[l].data;
           }
           console.log(this.resultadoMMES + " :ar");
+          this.htmlDia = this.dias[0] + " - " + this.dias[this.dias.length - 1];
 
           let _lineChartData: Array<any> = new Array(this.lineChartData.length);
           for (let i = 0; i < this.lineChartData.length; i++) {
@@ -176,12 +207,31 @@ export class RelatoriosPage {
           }
           this.lineChartData = _lineChartData;
 
-
-
+          this.carregarRotinas();
           // this.randomize();
         }
         else {
-          this.presentToast("Problemas com o Grafico");
+          if (this.semana > this.semanaAnterior) {
+            this.presentToast("A Semana Posterior não Possui Relatorio");
+            this.semanaAnterior = this.semana;
+            this.semana--;
+            this.gerarGrafico();
+          }
+          else if (this.semana < this.semanaAnterior) {
+            this.presentToast("A Semana Anterior não Possui Relatorio");
+            this.semanaAnterior = this.semana;
+            this.semana++;
+            this.gerarGrafico();
+          }
+          else if (this.semanaAnterior == null) {
+            this.presentToast("A semana atual não Possui Relatorio")
+            this.semanaAnterior = this.semana;
+            this.semana--;
+            this.gerarGrafico();
+          }
+          else {
+            this.presentToast("Problemas ao gerar o Grafico");
+          }
         }
       },
       err => {
@@ -191,13 +241,60 @@ export class RelatoriosPage {
       );
   }
 
+  private getWeekNumber() {
+    this.http.get(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.relatorio.receberWeekNumber + `/?data=${this.ano + "-" + this.mes + "-" + this.dia}`)
+      .map(res => res.json())
+      .subscribe(
+      data => {
+        if (data != "") {
+          this.semana = data;
+          console.log(this.semana);
+        }
+        else {
+
+        }
+      },
+      err => {
+        console.log("rej" + err);
+        this.presentToast(err);
+      }
+      );
+  }
+
+  carregarRotinas(){
+    for(let l:number=0;l<this.diasRotina.length;l++){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let data = { 'id_cad': this.userData.id_cad, 'data':this.diasRotina[l]};  
+    console.log(this.diasRotina[l]);
+    this.http.post(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.rotinas.pesquisar, JSON.stringify(data), {headers: headers})
+    .map(res => res.json())
+    .subscribe(
+      data => { 
+        if(data!=""){
+          for(let v:number=0;v<data.length;l++){
+        this.rotinas[l][v]=data[v];
+        }
+      }
+        else{
+         console.log("o dia Atual Não possue rotinas");
+        }
+      }, 
+      err => {
+        console.log("rej" + err);
+        this.presentToast(err);
+      }
+    );  
+  }
+  console.log(this.rotinas);
+  }
+
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
       duration: 2000
     });
     toast.present();
-
   }
 
 
