@@ -28,6 +28,7 @@ export class RelatoriosPage {
   semanaAnterior: number;
 
   htmlDia: string;
+  htmlDiaRotina: string;
 
   notasDiarias: { 'id_nota_diaria': "", 'id_cad': "", 'resultadommes': "", 'resultadotp': "", 'resultadotf': "", 'data': "", 'semana': "" }[];
   resultadoMMES: number[];
@@ -38,8 +39,7 @@ export class RelatoriosPage {
 
   diasRotina: string[];
  
-  rotinas : { 'id_cad':"",'nome':"", 'local':"", 'hora_inicio': "", 'hora_termino': "", 'observacao': "", 'clima': "",'data':"",'id_atividade':""}[][];    
-  
+  rotinasDia : { 'id_cad':"",'nome':"", 'local':"", 'hora_inicio': "", 'hora_termino': "", 'observacao': "", 'clima': "",'data':"",'id_atividade':""}[]; 
 
   // lineChart
   public lineChartData: Array<any> = [
@@ -93,7 +93,21 @@ export class RelatoriosPage {
 
   // events
   public chartClicked(e: any): void {
-    console.log(e);
+    try {
+      console.log(e.active[0]._chart.config.data.labels[e.active[0]._index]);
+      console.log(e);
+      let diaSemanaRotina : string=e.active[0]._chart.config.data.labels[e.active[0]._index];
+      for(let l:number=0;l<this.diaSemna.length;l++){
+        if(diaSemanaRotina==this.diaSemna[l]){
+          this.htmlDiaRotina=this.diasRotina[l];
+          this.carregarRotinas();
+          this.htmlDiaRotina=this.dias[l];
+        }
+      }
+    } catch (error) {
+      console.log(e);
+    }
+   
   }
 
   public chartHovered(e: any): void {
@@ -174,7 +188,8 @@ export class RelatoriosPage {
           this.resultadoTF = new Array();
           this.resultadoTP = new Array();
           this.dias = new Array();
-          this.rotinas=new Array();
+          this.rotinasDia=new Array();
+
           this.diasRotina=new Array();
           for (var l = 0; l < data.length; l++) {
             console.log("er :" + data[l].resultadommes);
@@ -189,6 +204,9 @@ export class RelatoriosPage {
           }
           console.log(this.resultadoMMES + " :ar");
           this.htmlDia = this.dias[0] + " - " + this.dias[this.dias.length - 1];
+          this.htmlDiaRotina=this.diasRotina[0];
+          this.carregarRotinas();
+          this.htmlDiaRotina=this.dias[0];
 
           let _lineChartData: Array<any> = new Array(this.lineChartData.length);
           for (let i = 0; i < this.lineChartData.length; i++) {
@@ -207,7 +225,7 @@ export class RelatoriosPage {
           }
           this.lineChartData = _lineChartData;
 
-          this.carregarRotinas();
+          
           // this.randomize();
         }
         else {
@@ -262,19 +280,19 @@ export class RelatoriosPage {
   }
 
   carregarRotinas(){
-    for(let l:number=0;l<this.diasRotina.length;l++){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let data = { 'id_cad': this.userData.id_cad, 'data':this.diasRotina[l]};  
-    console.log(this.diasRotina[l]);
+    let data = { 'id_cad': this.userData.id_cad, 'data':this.htmlDiaRotina};  
+    console.log(this.htmlDiaRotina);
     this.http.post(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.rotinas.pesquisar, JSON.stringify(data), {headers: headers})
     .map(res => res.json())
     .subscribe(
       data => { 
         if(data!=""){
-          for(let v:number=0;v<data.length;l++){
-        this.rotinas[l][v]=data[v];
-        }
+          for (var l = 0; l < data.length; l++) {
+              this.rotinasDia=data;
+          }
+              console.log(this.rotinasDia);
       }
         else{
          console.log("o dia Atual Não possue rotinas");
@@ -286,8 +304,6 @@ export class RelatoriosPage {
       }
     );  
   }
-  console.log(this.rotinas);
-  }
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({
@@ -296,8 +312,4 @@ export class RelatoriosPage {
     });
     toast.present();
   }
-
-
-
-
 }

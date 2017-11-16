@@ -51,51 +51,19 @@
         </div>
         <div class="info">
         <div [ngSwitch]="pet">
-            <ion-list *ngSwitchCase="'atividades'" class="content-segment">
-              <ion-item>
-                  <ion-thumbnail item-start>
-                    <img src="assets/img/logo.png">
-                  </ion-thumbnail>
-                  <h2>Oscar</h2>
-                </ion-item>
-    
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="assets/img/logo.png">
-                </ion-thumbnail>
-                <h2>Oscar</h2>
-              </ion-item>
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="assets/img/logo.png">
-                </ion-thumbnail>
-                <h2>Zoey</h2>
-              </ion-item>
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="assets/img/logo.png">
-                </ion-thumbnail>
-                <h2>Otto</h2>
-              </ion-item>
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="assets/img/logo.png">
-                </ion-thumbnail>
-                <h2>Zoey</h2>
-              </ion-item>
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="assets/img/logo.png">
-                </ion-thumbnail>
-                <h2>Zoey</h2>
-              </ion-item>
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="assets/img/logo.png">
-                </ion-thumbnail>
-                <h2>Oscar</h2>
-              </ion-item>
-            </ion-list>      
+         
+              <ion-list>
+                  <h3 class="rotina-dia">{{htmlDiaRotina}}</h3>
+                <ion-item *ngFor="let rotina of rotinasDia">
+                    
+                        <h2>{{rotina.nome}}</h2>
+                        <p>{{rotina.observacao}}</p>
+                        <ion-note item-end>{{rotina.hora_inicio}} <br> {{rotina.hora_termino}}</ion-note>
+                      
+                     
+                </ion-item>           
+              </ion-list>
+             
         </div>
     </div>
    

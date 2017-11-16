@@ -36,7 +36,12 @@ $info-margin-top: $grafico-height + 40px;
     bottom: 1px; 
 }
 
+.rotina-dia{
+    text-align: center;
+    font-size: 6Vw;
+}
+
 .info{
     margin-top: $info-margin-top;
-    background-color: rgb(152, 255, 0);
+    //background-color: rgb(152, 255, 0);
 }
