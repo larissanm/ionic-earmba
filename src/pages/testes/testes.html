@@ -35,7 +35,7 @@
       <div>
         <ion-card class="card-class">
           <ion-item>
-            <button ion-button clear item-start [disabled]="!isenabled">{{MNnumQuestion}}/{{MNnumOfQuestions}}</button>
+            <button ion-button clear item-start [disabled]="!isenabled">{{MNnumQuestion}}/{{MNnumOfQuestions}}  -   {{MNsubject}}</button>
           </ion-item>
           <hr>
           <ion-card-content>
@@ -59,7 +59,7 @@
           </ion-item>
           <hr>
           <ion-card-content>
-            <h2>{{question}}</h2>
+            <h2>{{question}}           {{tipo}}</h2>
             <img [src]="base64Img" />
           </ion-card-content>
           <hr>

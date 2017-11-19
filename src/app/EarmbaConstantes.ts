@@ -23,7 +23,8 @@ export class EarmbaConstantes{
             teste:{
                pesquisarPessoal:'teste/pesquisarPessoal',
                pesquisarMiniMental:'teste/pesquisarMiniMental',
-               responderMiniMental:'teste/inserirRespostaMiniMental'
+               responderMiniMental:'teste/inserirRespostaMiniMental',
+               insertNotaDiaria:'teste/insertNotaDiaria'
             }
         }
     }
