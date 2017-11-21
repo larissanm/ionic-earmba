@@ -1,6 +1,6 @@
 export class EarmbaConstantes{
     
-        static readonly BASE_URL : string ="http://localhost:0808/public/api/paciente";
+        static readonly BASE_URL : string ="http://192.168.0.8:8090/slim/public/api/paciente";
     
         static readonly Auth={
             login:'login',
@@ -24,7 +24,12 @@ export class EarmbaConstantes{
                pesquisarPessoal:'teste/pesquisarPessoal',
                pesquisarMiniMental:'teste/pesquisarMiniMental',
                responderMiniMental:'teste/inserirRespostaMiniMental',
-               insertNotaDiaria:'teste/insertNotaDiaria'
+               insertNotaDiaria:'teste/insertNotaDiaria',
+               responderPessoal:'teste/inserirRespostaPessoal'
+            },
+            pergunta:{
+                inserir:'pergunta/inserirPergunta',
+                pesquisar:'pergunta/pesquisarPergunta'
             }
         }
     }

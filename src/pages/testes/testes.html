@@ -55,16 +55,16 @@
       <div>
         <ion-card class="card-class">
           <ion-item>
-            <button ion-button clear item-start [disabled]="!isenabled">{{numQuestion}}/{{numOfQuestions}}</button>
+            <button ion-button clear item-start [disabled]="!isenabled">{{PESnumQuestion}}/{{PESnumOfQuestions}}</button>
           </ion-item>
           <hr>
           <ion-card-content>
-            <h2>{{question}}           {{tipo}}</h2>
-            <img [src]="base64Img" />
+            <h2>{{PESlblQuestion}}           {{PEStipo}}</h2>
+            <img [src]="PESimg" />
           </ion-card-content>
           <hr>
           <ion-item>
-            <button ion-button clear item-start [disabled]="!isenabled">Resposta: {{lblAnswer}}</button>
+            <button ion-button clear item-start [disabled]="!isenabled">Resposta: {{PESlblAnswer}}</button>
           </ion-item>
 
         </ion-card>

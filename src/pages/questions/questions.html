@@ -26,5 +26,20 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item-sliding  *ngFor="let question of questions">
+        <ion-item>
+            <h2>{{question.pergunta_vol}}</h2>
+            <p>{{question.resposta_vol}}</p>
+          
+            <img [src]="question.img"/>
+        </ion-item>
+          <ion-item-options>
+              <button ion-button color="danger" (click)="deletarRotina(rotina.id_atividade)" icon-start>
+                <ion-icon name="remove" ></ion-icon>
+                Excluir
+              </button>
+          </ion-item-options>
+    </ion-item-sliding>           
+  </ion-list>
 </ion-content>

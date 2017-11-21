@@ -10,6 +10,8 @@ import { ChartsModule } from 'ng2-charts';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -85,6 +87,10 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     StatusBar,
     SplashScreen,
     Camera,
+    FileTransfer,
+  //FileUploadOptions,
+  FileTransferObject,
+  File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider
   ]
