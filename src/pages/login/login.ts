@@ -53,6 +53,7 @@ this.http.post(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.login, JS
         data => { 
           if(data!=""){
           this.userData=data
+          this.userData.id_cad=data.id;
           console.log("data "+ this.userData.email);
           this.storage.set('userData',this.userData);
           this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: 'forward'});

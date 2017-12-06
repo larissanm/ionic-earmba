@@ -55,6 +55,31 @@ export class QuestionsPage {
     );  
   }
 
+  deletarPergunta(idPergunta : number){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    let data = {'id_pergunta_vol': idPergunta };
+
+    this.http.post(EarmbaConstantes.BASE_URL + '/' + EarmbaConstantes.Auth.pergunta.inativar, JSON.stringify(data), { headers: headers })
+      .map(res => res.json())
+      .subscribe(
+      data => {
+        if (data != "") {
+          this.presentToast(data);
+        }
+        else {
+          this.presentToast("Problemas com a Exclusao");
+        }
+      },
+      err => {
+        console.log("rej" + err);
+        this.presentToast(err);
+      }
+      );
+
+  }
+
   presentToast(msg) {
     let toast = this.toastCtrl.create({
     message: msg,

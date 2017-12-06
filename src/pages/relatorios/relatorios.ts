@@ -37,6 +37,8 @@ export class RelatoriosPage {
   diaSemna: string[] = ['Seg', 'Ter', 'Quar', 'Quin', 'Sex', 'Sab', 'Dom'];
   dias: string[];
 
+  countNoValue: number;
+
   diasRotina: string[];
  
   rotinasDia : { 'id_cad':"",'nome':"", 'local':"", 'hora_inicio': "", 'hora_termino': "", 'observacao': "", 'clima': "",'data':"",'id_atividade':""}[]; 
@@ -123,6 +125,7 @@ export class RelatoriosPage {
     this.ano = date.getFullYear();
     this.getWeekNumber();
     this.semanaAnterior = null;
+    this.countNoValue=0;
     storage.get('userData').then((val) => {
       this.userData.id_cad = val.id_cad;
       console.log('Value', this.userData.id_cad);
@@ -229,23 +232,27 @@ export class RelatoriosPage {
           // this.randomize();
         }
         else {
-          if (this.semana > this.semanaAnterior) {
+          if (this.semana > this.semanaAnterior && this.semanaAnterior != null && this.semana>0) {
             this.presentToast("A Semana Posterior não Possui Relatorio");
-            this.semanaAnterior = this.semana;
-            this.semana--;
-            this.gerarGrafico();
+            //this.semanaAnterior = this.semana;
+            //this.semana--;
+           // this.gerarGrafico();
+            console.log('wtf');
           }
-          else if (this.semana < this.semanaAnterior) {
+          else if (this.semana < this.semanaAnterior  && this.semanaAnterior != null && this.semana>0) {
             this.presentToast("A Semana Anterior não Possui Relatorio");
-            this.semanaAnterior = this.semana;
-            this.semana++;
-            this.gerarGrafico();
+            //this.semanaAnterior = this.semana;
+            //this.semana++;
+           // this.gerarGrafico();
+            console.log('fudeo');
           }
-          else if (this.semanaAnterior == null) {
+          else if (this.semanaAnterior == null && this.countNoValue<10 && this.semana>0) {
             this.presentToast("A semana atual não Possui Relatorio")
-            this.semanaAnterior = this.semana;
+         //   this.semanaAnterior = this.semana;
+            this.countNoValue++;
             this.semana--;
             this.gerarGrafico();
+            console.log('cero');
           }
           else {
             this.presentToast("Problemas ao gerar o Grafico");
