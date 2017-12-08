@@ -1,6 +1,6 @@
 export class EarmbaConstantes{
     
-        static readonly BASE_URL : string ="http://169.254.110.196:8090/slim/public/api/paciente";
+        static readonly BASE_URL : string ="https://tearm.com.br/slim-earmba/public/api/paciente";
     
         static readonly Auth={
             login:'login',
