@@ -37,6 +37,7 @@ import { TestPersonalComponent } from '../components/test-personal/test-personal
 
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
+
 @NgModule({
   declarations: [
     MyApp,
