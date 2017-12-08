@@ -67,6 +67,7 @@ export class QuestionsPage {
       data => {
         if (data != "") {
           this.presentToast(data);
+          this.navCtrl.setRoot(QuestionsPage, {}, {animate: true, direction: 'forward'});
         }
         else {
           this.presentToast("Problemas com a Exclusao");

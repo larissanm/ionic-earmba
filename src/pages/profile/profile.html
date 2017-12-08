@@ -18,40 +18,41 @@
 
         <div class="div-menu">
             <img [src]="profilePicture" class="profile-img">
-            <h2>Arissa Moromisato</h2>
-            <p>Nível da Doença: 2</p>
+            <h2>{{htmlNome}}</h2>
+            <p>Nível da Doença: {{htmlNivelDoenca}}</p>
         </div>
   
         <ion-list-header>Informações</ion-list-header>
         <ion-item *ngFor="let patient of patientInformation">Idade:
         <ion-note item-end>
-            {{patient.years}}
+            {{htmlIdade}}
         </ion-note>
         </ion-item>
 
         <ion-item *ngFor="let patient of patientInformation">Nascimento:
                 <ion-note item-end>
-                    {{patient.birth}}
+                    {{htmlNasc}}
         </ion-note>
         </ion-item> 
 
         <ion-item *ngFor="let patient of patientInformation">Sexo:
                 <ion-note item-end>
-                    {{patient.sex}}
+                    {{htmlSexo}}
         </ion-note>
         </ion-item> 
 
         <ion-item *ngFor="let patient of patientInformation">Telefone:
                 <ion-note item-end>
-                    {{patient.phone}}
+                    {{htmlTelefone}}
         </ion-note>
         </ion-item> 
 
-        <ion-item *ngFor="let patient of patientInformation">Obs:
+       <!-- <ion-item *ngFor="let patient of patientInformation">Obs:
                 <ion-note item-end>
                     {{patient.obs}}
         </ion-note>
         </ion-item> 
+    -->
 
     </ion-list>
 </ion-content>
